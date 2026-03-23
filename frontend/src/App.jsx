@@ -24,7 +24,7 @@ function App() {
   const getForecast = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/forecast?city=${city}`
+        `${import.meta.env.VITE_API_URL}/weather?city=${city}`
       );
       const data = res.data.list;
       const dailyData = data.filter((_, index) => index % 8 === 0);
@@ -47,7 +47,7 @@ function App() {
       setError("");
 
       const res = await axios.get(
-        `http://localhost:5000/weather?city=${city}`
+        `${import.meta.env.VITE_API_URL}/weather?city=${city}`
       );
 
       setWeather(res.data);
